@@ -1,0 +1,32 @@
+{
+  "name": "Reflect",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/austentalbot/Reflect.git"
+  },
+  "author": "Austen Talbot <austentalbot@gmail.com> (http://austentalbot.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/austentalbot/Reflect/issues"
+  },
+  "homepage": "https://github.com/austentalbot/Reflect",
+  "devDependencies": {
+    "browserify": "^10.1.0",
+    "gulp": "^3.8.11",
+    "reactify": "^1.1.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.1"
+  },
+  "dependencies": {
+    "flux": "^2.0.3",
+    "object-assign": "^2.0.0",
+    "react": "^0.13.2",
+    "reqwest": "^1.1.5"
+  }
+}
