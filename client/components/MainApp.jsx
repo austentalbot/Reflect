@@ -1,12 +1,12 @@
 var React = window.React = require('react');
 var R = React.createElement;
-var CoordInputForm = require('./CoordInputForm.jsx');
+var GoalInputForm = require('./GoalInputForm.jsx');
 var CoordStore = require('../stores/CoordStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 
 var getCoordState = function() {
   return {
-    coordCount: CoordStore.getCoordCount()
+    goalCount: CoordStore.getCoordCount()
   };
 };
 
@@ -22,8 +22,8 @@ var MainApp = module.exports = React.createClass({
   render: function() {
     return R('div', {
       children: [
-        R('h1', {}, 'Route planner'),
-        R(CoordInputForm, {coordCount: this.state.coordCount})
+        R('h1', {}, 'Reflect'),
+        R(GoalInputForm, {goalCount: this.state.goalCount})
       ]
     });
   }
