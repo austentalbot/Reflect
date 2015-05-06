@@ -22,7 +22,9 @@ var MainApp = module.exports = React.createClass({
   render: function() {
     return R('div', {
       children: [
-        R('h1', {}, 'Reflect'),
+        R('h1', {
+          className: 'reflectTitle'
+        }, 'Reflect'),
         R(GoalInputForm, {goalCount: this.state.goalCount})
       ]
     });

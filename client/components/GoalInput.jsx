@@ -4,9 +4,14 @@ var R = React.createElement;
 var GoalInput = module.exports = React.createClass({
   render: function() {
     return R('div', {
-      className: 'goalInput',
+      className: 'goalInputRow',
       children: [
-        'Goal ' + this.props.idNum + ':',
+        R('span', {
+          className: 'goalInputTitle',
+          children: [
+            'Goal ' + this.props.idNum
+          ]
+        }),
         R('input', {
           className: 'goalInput',
           id: 'goal' + this.props.idNum,

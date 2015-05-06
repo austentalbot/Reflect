@@ -2,7 +2,6 @@ var React = require('react');
 var R = React.createElement;
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 var GoalInput = require('./GoalInput.jsx');
-var ConvertCoords = window.convertCoords = require('../helpers/ConvertCoords.js');
 var reqwest = require('reqwest');
 
 var GoalInputForm = module.exports = React.createClass({
@@ -14,6 +13,7 @@ var GoalInputForm = module.exports = React.createClass({
   render: function() {
     var that = this;
     var addButton = R('button', {
+      className: 'addGoalButton',
       onClick: this.onAddInputClick
     }, 'Add goal');
 
