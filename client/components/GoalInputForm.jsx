@@ -10,12 +10,20 @@ var GoalInputForm = module.exports = React.createClass({
       actionType: 'INCREMENT_COORD_COUNT'
     });
   },
+  onSubmitClick: function() {
+    console.log('submit!');
+  },
   render: function() {
     var that = this;
     var addButton = R('button', {
       className: 'addGoalButton',
       onClick: this.onAddInputClick
     }, 'Add goal');
+
+    var submitButton = R('button', {
+      className: 'submitGoalsButton button-primary',
+      onClick: this.onSubmitInputClick
+    }, 'Submit goals');
 
     var inputs = [];
     for (var i = 0; i<that.props.goalCount; i++) {
@@ -25,6 +33,7 @@ var GoalInputForm = module.exports = React.createClass({
       className: 'goalInputForm',
       children: [
         addButton,
+        submitButton
       ].concat(inputs)
     });
   }
