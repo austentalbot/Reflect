@@ -6,7 +6,8 @@ var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 
 var getGoalState = function() {
   return {
-    goalCount: GoalStore.getGoalCount()
+    goalCount: GoalStore.getGoalCount(),
+    firebase: GoalStore.getFirebase()
   };
 };
 
@@ -25,7 +26,10 @@ var MainApp = module.exports = React.createClass({
         R('h1', {
           className: 'reflectTitle'
         }, 'Reflect'),
-        R(GoalInputForm, {goalCount: this.state.goalCount})
+        R(GoalInputForm, {
+          goalCount: this.state.goalCount,
+          firebase: this.state.firebase
+        })
       ]
     });
   }

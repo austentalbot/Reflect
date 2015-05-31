@@ -2,6 +2,8 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var GoalConstants = require('../constants/GoalConstants.js');
+var Firebase = require('firebase');
+var client_credentials = require('../client_credentials.js');
 
 //internal array of goals
 var _goals = [];
@@ -29,6 +31,9 @@ var GoalStore = assign({}, EventEmitter.prototype, {
   getGoalCount: function() {
     return _goalCount;
   },
+  getFirebase: function() {
+    return firebaseVal;
+  },
   emitChange: function() {
     this.emit('change');
   },
@@ -38,6 +43,15 @@ var GoalStore = assign({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
     this.removeListener('change', callback);
   }
+});
+
+// set up firebase
+var Fire = window.Fire = new Firebase(client_credentials.firebaseUrl);
+Fire.set('test firebase');
+var firebaseVal;
+Fire.on('value', function(data) {
+  firebaseVal = data.val();
+  GoalStore.emitChange();
 });
 
 // Register dispatcher callback

@@ -36,7 +36,8 @@ var GoalInputForm = module.exports = React.createClass({
       className: 'goalInputForm',
       children: [
         addButton,
-        submitButton
+        submitButton,
+        R('div', {}, that.props.firebase)
       ].concat(inputs)
     });
   }
