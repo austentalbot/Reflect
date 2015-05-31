@@ -7,11 +7,14 @@ var reqwest = require('reqwest');
 var GoalInputForm = module.exports = React.createClass({
   onAddInputClick: function() {
     AppDispatcher.handleViewAction({
-      actionType: 'INCREMENT_COORD_COUNT'
+      actionType: 'INCREMENT_GOAL_COUNT'
     });
   },
   onSubmitClick: function() {
-    console.log('submit!');
+    var that = this;
+    AppDispatcher.handleViewAction({
+      actionType: 'SUBMIT_GOALS'
+    });
   },
   render: function() {
     var that = this;
@@ -22,7 +25,7 @@ var GoalInputForm = module.exports = React.createClass({
 
     var submitButton = R('button', {
       className: 'submitGoalsButton button-primary',
-      onClick: this.onSubmitInputClick
+      onClick: this.onSubmitClick
     }, 'Submit goals');
 
     var inputs = [];

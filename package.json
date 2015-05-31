@@ -27,6 +27,7 @@
     "flux": "^2.0.3",
     "object-assign": "^2.0.0",
     "react": "^0.13.2",
+    "reactfire": "^0.4.0",
     "reqwest": "^1.1.5"
   }
 }

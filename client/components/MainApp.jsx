@@ -1,23 +1,23 @@
 var React = window.React = require('react');
 var R = React.createElement;
 var GoalInputForm = require('./GoalInputForm.jsx');
-var CoordStore = require('../stores/CoordStore.js');
+var GoalStore = require('../stores/GoalStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 
-var getCoordState = function() {
+var getGoalState = function() {
   return {
-    goalCount: CoordStore.getCoordCount()
+    goalCount: GoalStore.getGoalCount()
   };
 };
 
 var MainApp = module.exports = React.createClass({
   getInitialState: function() {
-    CoordStore.addChangeListener(this._onChange);
-    return getCoordState();
+    GoalStore.addChangeListener(this._onChange);
+    return getGoalState();
   },
   _onChange: function() {
     console.log('change was emitted');
-    this.setState(getCoordState());
+    this.setState(getGoalState());
   },
   render: function() {
     return R('div', {

@@ -1,5 +1,6 @@
 var React = require('react');
 var R = React.createElement;
+var GoalConstants = require('../constants/GoalConstants.js');
 
 var GoalInput = module.exports = React.createClass({
   render: function() {
@@ -9,12 +10,12 @@ var GoalInput = module.exports = React.createClass({
         R('span', {
           className: 'goalInputTitle',
           children: [
-            'Goal ' + this.props.idNum
+            'Goal ' + (this.props.idNum + 1)
           ]
         }),
         R('input', {
           className: 'goalInput',
-          id: 'goal' + this.props.idNum,
+          id: GoalConstants.GOAL_ID_PREFIX + this.props.idNum,
           type: 'text',
           placeholder: 'What is your goal?'
         })
