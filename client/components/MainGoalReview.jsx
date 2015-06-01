@@ -2,7 +2,7 @@ var React = window.React = require('react');
 var R = React.createElement;
 var GoalStore = require('../stores/GoalStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
-
+var GoalReviewRow = require('./GoalReviewRow.jsx');
 var getGoalState = function() {
   return {
     goals: GoalStore.getFirebase()
@@ -33,7 +33,7 @@ var MainGoalReview = module.exports = React.createClass({
   render: function() {
     var that = this;
     var firebase = that.state.goals.map(function(goal, id) {
-      return R('div', {key: id}, goal.name);
+      return R(GoalReviewRow, {key: id, name: goal.name});
     });
     var addNewGoalButton = R('button', {
       onClick: that.onAddNewGoalClick

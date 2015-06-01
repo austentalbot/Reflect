@@ -16,6 +16,10 @@ html {
   margin-right: 10px;
 }
 
+.goal-review-row-title {
+  font-weight: bold;
+}
+
 .goalInput {
   width: 300px;
 }

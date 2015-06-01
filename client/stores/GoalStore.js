@@ -84,8 +84,10 @@ AppDispatcher.register(function(payload) {
     console.log('submitting goals!');
     var goal;
     for (var i = 0; i < _goalCount; i++) {
-      goal = document.getElementById(GoalConstants.GOAL_ID_PREFIX + i).value;
-      Fire.push({ name: goal });
+      goal = document.getElementById(GoalConstants.GOAL_ID_PREFIX + i).value.trim();
+      if (goal.length > 0) {
+        Fire.push({ name: goal });
+      }
     }
   }
   
