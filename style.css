@@ -20,6 +20,11 @@ html {
   font-weight: bold;
 }
 
+.goal-review-row-detail-input {
+  width: 350px;
+  resize: none;
+}
+
 .goalInput {
   width: 300px;
 }

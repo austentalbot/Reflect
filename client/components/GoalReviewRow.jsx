@@ -3,6 +3,8 @@ var R = React.createElement;
 var GoalStore = require('../stores/GoalStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 
+var maxLength = 200;
+
 var GoalReviewRow = module.exports = React.createClass({
   getInitialState: function() {
     return {
@@ -30,9 +32,11 @@ var GoalReviewRow = module.exports = React.createClass({
             R('div', {
               className: 'goal-review-row-detail-question'
             }, 'What steps have you taken to meet your goal?'),
-            R('input', {
+            R('textarea', {
               className: 'goal-review-row-detail-input',
-              type: 'text'
+              type: 'text',
+              maxLength: maxLength,
+              placeholder: 'Type up to ' + maxLength + ' characters'
             })
           ]
         }),
@@ -42,9 +46,11 @@ var GoalReviewRow = module.exports = React.createClass({
             R('div', {
               className: 'goal-review-row-detail-question'
             }, 'What is blocking you from your goal?'),
-            R('input', {
+            R('textarea', {
               className: 'goal-review-row-detail-input',
-              type: 'text'
+              type: 'text',
+              maxLength: maxLength,
+              placeholder: 'Type up to ' + maxLength + ' characters'
             })
           ]
         }),
@@ -54,9 +60,11 @@ var GoalReviewRow = module.exports = React.createClass({
             R('div', {
               className: 'goal-review-row-detail-question'
             }, 'Are you on track to meet your goal?'),
-            R('input', {
+            R('textarea', {
               className: 'goal-review-row-detail-input',
-              type: 'text'
+              type: 'text',
+              maxLength: maxLength,
+              placeholder: 'Type up to ' + maxLength + ' characters'
             })
           ]
         })
