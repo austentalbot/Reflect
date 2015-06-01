@@ -13,10 +13,15 @@ var getGoalState = function() {
 
 var MainGoalCreation = module.exports = React.createClass({
   getInitialState: function() {
-    GoalStore.addChangeListener(this._onChange);
     return getGoalState();
   },
-  _onChange: function() {
+  componentWillMount: function() {
+    GoalStore.addGoalCountChangeListener(this._onGoalCreationChange);
+  },
+  componentWillUnmount: function() {
+    GoalStore.removeGoalCountChangeListener(this._onGoalCreationChange);
+  },
+  _onGoalCreationChange: function() {
     console.log('change was emitted');
     this.setState(getGoalState());
   },

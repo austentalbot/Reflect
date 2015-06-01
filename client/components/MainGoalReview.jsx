@@ -14,10 +14,15 @@ var MainGoalReview = module.exports = React.createClass({
     router: React.PropTypes.func.isRequired
   },
   getInitialState: function() {
-    GoalStore.addChangeListener(this._onChange);
     return getGoalState();
   },
-  _onChange: function() {
+  componentWillMount: function() {
+    GoalStore.addFirebaseGoalChangeListener(this._onGoalReviewChange);
+  },
+  componentWillUnmount: function() {
+    GoalStore.removeFirebaseGoalChangeListener(this._onGoalReviewChange);
+  },
+  _onGoalReviewChange: function() {
     console.log('change was emitted');
     this.setState(getGoalState());
   },

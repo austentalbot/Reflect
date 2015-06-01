@@ -34,14 +34,23 @@ var GoalStore = assign({}, EventEmitter.prototype, {
   getFirebase: function() {
     return firebaseVals;
   },
-  emitChange: function() {
-    this.emit('change');
+  emitGoalCountChange: function() {
+    this.emit('GOAL_COUNT_CHANGE');
   },
-  addChangeListener: function(callback) {
-    this.on('change', callback);
+  addGoalCountChangeListener: function(callback) {
+    this.on('GOAL_COUNT_CHANGE', callback);
   },
-  removeChangeListener: function(callback) {
-    this.removeListener('change', callback);
+  removeGoalCountChangeListener: function(callback) {
+    this.removeListener('GOAL_COUNT_CHANGE', callback);
+  },
+  emitFirebaseGoalChange: function() {
+    this.emit('FIREBASE_GOAL_CHANGE');
+  },
+  addFirebaseGoalChangeListener: function(callback) {
+    this.on('FIREBASE_GOAL_CHANGE', callback);
+  },
+  removeFirebaseGoalChangeListener: function(callback) {
+    this.removeListener('FIREBASE_GOAL_CHANGE', callback);
   }
 });
 
@@ -51,7 +60,7 @@ var Fire = window.Fire = new Firebase(client_credentials.firebaseUrl);
 var firebaseVals = [];
 Fire.on('child_added', function(data) {
   firebaseVals.push(data.val());
-  GoalStore.emitChange();
+  GoalStore.emitFirebaseGoalChange();
 });
 // xcxc this is for testing remove later
 // Fire.remove();
@@ -64,13 +73,13 @@ AppDispatcher.register(function(payload) {
   if (action.actionType === 'LOAD_GOALS') {
     loadGoals(action.data);
     // If action was acted upon, emit change event
-    GoalStore.emitChange();
+    GoalStore.emitGoalCountChange();
   } else if (action.actionType === 'INCREMENT_GOAL_COUNT') {
     GoalStore.incrementGoalCount();
-    GoalStore.emitChange();
+    GoalStore.emitGoalCountChange();
   } else if (action.actionType === 'RESET_GOAL_COUNT') {
     GoalStore.resetGoalCount();
-    GoalStore.emitChange();
+    GoalStore.emitGoalCountChange();
   } else if (action.actionType === 'SUBMIT_GOALS') {
     console.log('submitting goals!');
     var goal;

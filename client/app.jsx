@@ -2,6 +2,7 @@ var React = window.React = require('react');
 var R = React.createElement;
 var MainGoalCreation = require('./components/MainGoalCreation.jsx');
 var MainGoalReview = require('./components/MainGoalReview.jsx');
+var GoalStore = require('./stores/GoalStore.js');
 
 var Router = require('react-router');
 var Route = Router.Route;
@@ -23,7 +24,8 @@ var routes = (
   })
 );
 
-Router.run(routes, Router.HashLocation, function(Root) {
+Router.run(routes, Router.HashLocation, function(Root, state) {
   React.render(R(Root), document.getElementById('react'));
+  GoalStore.resetGoalCount();
 });
 
