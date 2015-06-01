@@ -11,7 +11,7 @@ var getGoalState = function() {
   };
 };
 
-var MainApp = module.exports = React.createClass({
+var MainGoalCreation = module.exports = React.createClass({
   getInitialState: function() {
     GoalStore.addChangeListener(this._onChange);
     return getGoalState();
