@@ -25,8 +25,42 @@ var GoalReviewRow = module.exports = React.createClass({
     if (this.state.isOpen) {
       rowContents.push(
         R('div', {
-          className: 'goal-review-row-questions'
-        }, 'Are you on track to meet your goal?')
+          className: 'goal-review-row-detail',
+          children: [
+            R('div', {
+              className: 'goal-review-row-detail-question'
+            }, 'What steps have you taken to meet your goal?'),
+            R('input', {
+              className: 'goal-review-row-detail-input',
+              type: 'text'
+            })
+          ]
+        }),
+        R('div', {
+          className: 'goal-review-row-detail',
+          children: [
+            R('div', {
+              className: 'goal-review-row-detail-question'
+            }, 'What is blocking you from your goal?'),
+            R('input', {
+              className: 'goal-review-row-detail-input',
+              type: 'text'
+            })
+          ]
+        }),
+        R('div', {
+          className: 'goal-review-row-detail',
+          children: [
+            R('div', {
+              className: 'goal-review-row-detail-question'
+            }, 'Are you on track to meet your goal?'),
+            R('input', {
+              className: 'goal-review-row-detail-input',
+              type: 'text'
+            })
+          ]
+        })
+
       );
     }
 
