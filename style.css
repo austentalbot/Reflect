@@ -12,6 +12,10 @@ html {
   margin-bottom: 40px;
 }
 
+.submitGoalsButton {
+  margin-right: 10px;
+}
+
 .goalInput {
   width: 300px;
 }

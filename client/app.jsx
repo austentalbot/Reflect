@@ -1,6 +1,7 @@
 var React = window.React = require('react');
 var R = React.createElement;
 var MainGoalCreation = require('./components/MainGoalCreation.jsx');
+var MainGoalReview = require('./components/MainGoalReview.jsx');
 
 var Router = require('react-router');
 var Route = Router.Route;
@@ -16,7 +17,8 @@ var routes = (
   R(Route, {
     handler: App,
     children: [
-      R(Route, { path: '/', handler: MainGoalCreation })
+      R(Route, { path: 'home', handler: MainGoalCreation }),
+      R(Route, { path: 'goals', handler: MainGoalReview })
     ]
   })
 );

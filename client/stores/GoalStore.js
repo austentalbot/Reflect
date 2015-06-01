@@ -32,7 +32,7 @@ var GoalStore = assign({}, EventEmitter.prototype, {
     return _goalCount;
   },
   getFirebase: function() {
-    return firebaseVal;
+    return firebaseVals;
   },
   emitChange: function() {
     this.emit('change');
@@ -46,13 +46,16 @@ var GoalStore = assign({}, EventEmitter.prototype, {
 });
 
 // set up firebase
+// xcxc remove window.fire reference
 var Fire = window.Fire = new Firebase(client_credentials.firebaseUrl);
-Fire.set('test firebase');
-var firebaseVal;
-Fire.on('value', function(data) {
-  firebaseVal = data.val();
+var firebaseVals = [];
+Fire.on('child_added', function(data) {
+  firebaseVals.push(data.val());
   GoalStore.emitChange();
 });
+// xcxc this is for testing remove later
+// Fire.remove();
+
 
 // Register dispatcher callback
 AppDispatcher.register(function(payload) {
@@ -70,9 +73,10 @@ AppDispatcher.register(function(payload) {
     GoalStore.emitChange();
   } else if (action.actionType === 'SUBMIT_GOALS') {
     console.log('submitting goals!');
+    var goal;
     for (var i = 0; i < _goalCount; i++) {
-      console.log(i);
-      console.log(document.getElementById(GoalConstants.GOAL_ID_PREFIX + i).value);
+      goal = document.getElementById(GoalConstants.GOAL_ID_PREFIX + i).value;
+      Fire.push({ name: goal });
     }
   }
   
