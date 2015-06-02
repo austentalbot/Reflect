@@ -65,6 +65,17 @@ var GoalReviewRow = module.exports = React.createClass({
               type: 'text',
               maxLength: maxLength,
               placeholder: 'Type up to ' + maxLength + ' characters'
+            }),
+            R('div', {
+              className: 'goal-review-color-picker',
+              onClick: function(e) {
+                // this needs to be its own component so we can use 'this'
+                var rect = that.getDOMNode().getBoundingClientRect();
+                console.log('rect', rect);
+                console.log('x, left, width', e.pageX, rect.left, rect.width);
+                var pct = (e.pageX - rect.left)/rect.width;
+                console.log('pct', pct);
+              }
             })
           ]
         })
