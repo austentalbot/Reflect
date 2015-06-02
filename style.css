@@ -25,7 +25,7 @@ html {
   resize: none;
 }
 
-.goal-review-color-picker {
+.goal-review-progress-bar {
   height: 30px;
   width: 350px;
   /*background: linear-gradient(to right, #2ecc71, #f1c40f, #e74c3c);*/

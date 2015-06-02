@@ -2,6 +2,7 @@ var React = window.React = require('react');
 var R = React.createElement;
 var GoalStore = require('../stores/GoalStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var GoalReviewProgressBar = require('./GoalReviewProgressBar.jsx');
 
 var maxLength = 200;
 
@@ -66,17 +67,7 @@ var GoalReviewRow = module.exports = React.createClass({
               maxLength: maxLength,
               placeholder: 'Type up to ' + maxLength + ' characters'
             }),
-            R('div', {
-              className: 'goal-review-color-picker',
-              onClick: function(e) {
-                // this needs to be its own component so we can use 'this'
-                var rect = that.getDOMNode().getBoundingClientRect();
-                console.log('rect', rect);
-                console.log('x, left, width', e.pageX, rect.left, rect.width);
-                var pct = (e.pageX - rect.left)/rect.width;
-                console.log('pct', pct);
-              }
-            })
+            R(GoalReviewProgressBar, {})
           ]
         })
 
