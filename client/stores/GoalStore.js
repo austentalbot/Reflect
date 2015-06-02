@@ -32,7 +32,7 @@ var GoalStore = assign({}, EventEmitter.prototype, {
     return _goalCount;
   },
   getFirebase: function() {
-    return firebaseVals;
+    return firebase;
   },
   emitGoalCountChange: function() {
     this.emit('GOAL_COUNT_CHANGE');
@@ -57,9 +57,10 @@ var GoalStore = assign({}, EventEmitter.prototype, {
 // set up firebase
 // xcxc remove window.fire reference
 var Fire = window.Fire = new Firebase(client_credentials.firebaseUrl);
-var firebaseVals = [];
+var firebase = [];
 Fire.on('child_added', function(data) {
-  firebaseVals.push(data.val());
+  console.log('child_added', data);
+  firebase.push(data);
   GoalStore.emitFirebaseGoalChange();
 });
 // xcxc this is for testing remove later
@@ -86,7 +87,7 @@ AppDispatcher.register(function(payload) {
     for (var i = 0; i < _goalCount; i++) {
       goal = document.getElementById(GoalConstants.GOAL_ID_PREFIX + i).value.trim();
       if (goal.length > 0) {
-        Fire.push({ name: goal });
+        Fire.push({ name: goal, updates: [] });
       }
     }
   }

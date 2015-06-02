@@ -60,16 +60,14 @@ var GoalReviewRow = module.exports = React.createClass({
           children: [
             R('div', {
               className: 'goal-review-row-detail-question'
-            }, 'Are you on track to meet your goal?'),
-            R('textarea', {
-              className: 'goal-review-row-detail-input',
-              type: 'text',
-              maxLength: maxLength,
-              placeholder: 'Type up to ' + maxLength + ' characters'
-            }),
+            }, 'How on track are you to meet your goal?'),
             R(GoalReviewProgressBar, {})
           ]
-        })
+        }),
+        R('button', {
+          className: 'goal-review-row-submit-detail',
+          onClick: function() { console.log('submitting progress'); }
+        }, 'Submit progress')
 
       );
     }
