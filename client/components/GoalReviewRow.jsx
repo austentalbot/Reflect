@@ -18,12 +18,15 @@ var GoalReviewRow = module.exports = React.createClass({
   onSubmitProgressClick: function() {
     var goalSteps = document.getElementById('goal-steps-' + this.props.goal.key()).value.trim();
     var goalBlockers = document.getElementById('goal-blockers-' + this.props.goal.key()).value.trim();
-    var progress = {
-      blockers: goalBlockers,
-      steps: goalSteps,
-      score: this.refs.progress_bar.state.x
-    };
-    this.props.goal.ref().child('updates').push(progress);
+    if (goalSteps.length && goalBlockers.length) {
+      var progress = {
+        blockers: goalBlockers,
+        steps: goalSteps,
+        score: this.refs.progress_bar.state.x
+      };
+      this.props.goal.ref().child('updates').push(progress);
+      this.setState({ isOpen: false});
+    }
   },
   render: function() {
     var that = this;
