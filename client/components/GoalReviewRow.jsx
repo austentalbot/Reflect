@@ -15,6 +15,16 @@ var GoalReviewRow = module.exports = React.createClass({
   onOpenDetailsClick: function() {
     this.setState({ isOpen: !this.state.isOpen })
   },
+  onSubmitProgressClick: function() {
+    var goalSteps = document.getElementById('goal-steps-' + this.props.goal.key()).value.trim();
+    var goalBlockers = document.getElementById('goal-blockers-' + this.props.goal.key()).value.trim();
+    var progress = {
+      blockers: goalBlockers,
+      steps: goalSteps,
+      score: this.refs.progress_bar.state.x
+    };
+    this.props.goal.ref().child('updates').push(progress);
+  },
   render: function() {
     var that = this;
 
@@ -22,7 +32,7 @@ var GoalReviewRow = module.exports = React.createClass({
       R('div', {
         className: 'goal-review-row-title',
         onClick: that.onOpenDetailsClick
-      }, this.props.name)
+      }, this.props.goal.val().name)
     ];
 
     if (this.state.isOpen) {
@@ -35,6 +45,7 @@ var GoalReviewRow = module.exports = React.createClass({
             }, 'What steps have you taken to meet your goal?'),
             R('textarea', {
               className: 'goal-review-row-detail-input',
+              id: 'goal-steps-' + this.props.goal.key(),
               type: 'text',
               maxLength: maxLength,
               placeholder: 'Type up to ' + maxLength + ' characters'
@@ -49,6 +60,7 @@ var GoalReviewRow = module.exports = React.createClass({
             }, 'What is blocking you from your goal?'),
             R('textarea', {
               className: 'goal-review-row-detail-input',
+              id: 'goal-blockers-' + this.props.goal.key(),
               type: 'text',
               maxLength: maxLength,
               placeholder: 'Type up to ' + maxLength + ' characters'
@@ -61,12 +73,14 @@ var GoalReviewRow = module.exports = React.createClass({
             R('div', {
               className: 'goal-review-row-detail-question'
             }, 'How on track are you to meet your goal?'),
-            R(GoalReviewProgressBar, {})
+            R(GoalReviewProgressBar, {
+              ref: 'progress_bar'
+            })
           ]
         }),
         R('button', {
           className: 'goal-review-row-submit-detail',
-          onClick: function() { console.log('submitting progress'); }
+          onClick: that.onSubmitProgressClick
         }, 'Submit progress')
 
       );

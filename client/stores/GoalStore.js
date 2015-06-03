@@ -87,7 +87,7 @@ AppDispatcher.register(function(payload) {
     for (var i = 0; i < _goalCount; i++) {
       goal = document.getElementById(GoalConstants.GOAL_ID_PREFIX + i).value.trim();
       if (goal.length > 0) {
-        Fire.push({ name: goal, updates: [] });
+        Fire.push({ name: goal });
       }
     }
   }

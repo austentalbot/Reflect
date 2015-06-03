@@ -33,10 +33,7 @@ var MainGoalReview = module.exports = React.createClass({
   render: function() {
     var that = this;
     var firebase = that.state.goals.map(function(goal, id) {
-    // var goals = [{name:'make the internet work'}, {name:'yell at comcast'}];
-    // var firebase = goals.map(function(goal, id) {
-      window.goal = goal;
-      return R(GoalReviewRow, {key: id, name: goal.val().name});
+      return R(GoalReviewRow, {key: id, goal: goal});
     });
     var addNewGoalButton = R('button', {
       onClick: that.onAddNewGoalClick
