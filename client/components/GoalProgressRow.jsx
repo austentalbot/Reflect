@@ -2,6 +2,7 @@ var React = window.React = require('react');
 var R = React.createElement;
 var GoalStore = require('../stores/GoalStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var GoalProgressEntry = require('./GoalProgressEntry.jsx');
 var ReactFire = require('reactfire');
 var Firebase = require('firebase');
 
@@ -30,13 +31,7 @@ var GoalProgressRow = module.exports = React.createClass({
     ];
 
     var history = this.state.updates.map(function(story) {
-      return R('div', {
-        children: [
-          R('div', {}, 'Blockers: ' + story.blockers),
-          R('div', {}, 'Steps: ' + story.steps),
-          R('div', {}, 'Score: ' + story.score)
-        ]
-      });
+      return R(GoalProgressEntry, {story: story});
     });
 
     if (this.state.isOpen) {
