@@ -18,7 +18,8 @@ var GoalReviewRow = module.exports = React.createClass({
   onSubmitProgressClick: function() {
     var goalSteps = document.getElementById('goal-steps-' + this.props.goal.key()).value.trim();
     var goalBlockers = document.getElementById('goal-blockers-' + this.props.goal.key()).value.trim();
-    if (goalSteps.length && goalBlockers.length) {
+    var validSubmit = goalSteps.length && goalBlockers.length && goalSteps.length <= maxLength && goalBlockers.length <= maxLength
+    if (validSubmit) {
       var progress = {
         blockers: goalBlockers,
         steps: goalSteps,
@@ -85,7 +86,6 @@ var GoalReviewRow = module.exports = React.createClass({
           className: 'goal-review-row-submit-detail',
           onClick: that.onSubmitProgressClick
         }, 'Submit progress')
-
       );
     }
 

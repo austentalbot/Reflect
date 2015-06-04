@@ -2,14 +2,14 @@ var React = window.React = require('react');
 var R = React.createElement;
 var GoalStore = require('../stores/GoalStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
-var GoalReviewRow = require('./GoalReviewRow.jsx');
+
 var getGoalState = function() {
   return {
     goals: GoalStore.getFirebase()
   };
 };
 
-var MainGoalReview = module.exports = React.createClass({
+var MainProgressDetail = module.exports = React.createClass({
   contextTypes: {
     router: React.PropTypes.func.isRequired
   },
@@ -30,35 +30,27 @@ var MainGoalReview = module.exports = React.createClass({
     console.log('add new goal');
     this.context.router.transitionTo('/home');
   },
-  onReviewGoalProgressClick: function() {
-    console.log('review goal progress');
-    this.context.router.transitionTo('/progress');
-  },
   render: function() {
     var that = this;
-    var firebase = that.state.goals.map(function(goal, id) {
-      return R(GoalReviewRow, {key: id, goal: goal});
-    });
+    // var firebase = that.state.goals.map(function(goal, id) {
+    //   return R(GoalReviewRow, {key: id, goal: goal});
+    // });
     var addNewGoalButton = R('button', {
       onClick: that.onAddNewGoalClick
     }, 'Add new goal');
 
-    var reviewGoalProgressButton = R('button', {
-      onClick: that.onReviewGoalProgressClick
-    }, 'Review goal progress');
-
-    return R('div', {
-      children: [
-        R('h1', {
-          className: 'reflectTitle'
-        }, 'Reflect'),
-        R('h2', {}, 'Goals:'),
-        addNewGoalButton,
-        reviewGoalProgressButton,
-        R('div', {
-          children: firebase
-        })
-      ]
-    });
+    // return R('div', {
+    //   children: [
+    //     R('h1', {
+    //       className: 'reflectTitle'
+    //     }, 'Reflect'),
+    //     R('h2', {}, 'Goals:'),
+    //     addNewGoalButton,
+    //     R('div', {
+    //       children: firebase
+    //     })
+    //   ]
+    // });
+    return addNewGoalButton
   }
 });
