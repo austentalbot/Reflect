@@ -3,6 +3,7 @@ var R = React.createElement;
 var GoalStore = require('../stores/GoalStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 var GoalReviewProgressBar = require('./GoalReviewProgressBar.jsx');
+var Firebase = require('firebase');
 
 var maxLength = 200;
 
@@ -23,7 +24,8 @@ var GoalReviewRow = module.exports = React.createClass({
       var progress = {
         blockers: goalBlockers,
         steps: goalSteps,
-        score: this.refs.progress_bar.state.x
+        score: this.refs.progress_bar.state.x,
+        timestamp: Firebase.ServerValue.TIMESTAMP
       };
       this.props.goal.ref().child('updates').push(progress);
       this.setState({ isOpen: false});

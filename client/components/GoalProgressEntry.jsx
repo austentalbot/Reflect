@@ -6,10 +6,19 @@ var AppDispatcher = require('../dispatcher/AppDispatcher.js');
 var GoalProgressEntry = module.exports = React.createClass({
   render: function() {
     var story = this.props.story;
+    window.story = story;
 
     return R('div', {
       className: 'goal-progress-entry',
       children: [
+      R('div', {
+          children: [
+            R('span', {
+              className: 'goal-progress-entry-title'
+            }, 'Date: '),
+            R('span', {}, new Date(story.timestamp).toString())
+          ]
+        }),
         R('div', {
           children: [
             R('span', {
