@@ -10,9 +10,30 @@ var GoalProgressEntry = module.exports = React.createClass({
     return R('div', {
       className: 'goal-progress-entry',
       children: [
-        R('div', {}, 'Steps: ' + story.steps),
-        R('div', {}, 'Blockers: ' + story.blockers),
-        R('div', {}, 'Score: ' + story.score)
+        R('div', {
+          children: [
+            R('span', {
+              className: 'goal-progress-entry-title'
+            }, 'Steps: '),
+            R('span', {}, story.steps)
+          ]
+        }),
+        R('div', {
+          children: [
+            R('span', {
+              className: 'goal-progress-entry-title'
+            }, 'Blockers: '),
+            R('span', {}, story.blockers)
+          ]
+        }),
+        R('div', {
+          children: [
+            R('span', {
+              className: 'goal-progress-entry-title'
+            }, 'Score: '),
+            R('span', {}, story.score)
+          ]
+        })
       ]
     });
   }

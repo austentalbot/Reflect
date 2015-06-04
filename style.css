@@ -49,6 +49,11 @@ html {
   width: 450px;
 }
 
+.goal-progress-entry-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .goalInput {
   width: 300px;
 }
