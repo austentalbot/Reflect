@@ -56,6 +56,7 @@ var GoalStore = assign({}, EventEmitter.prototype, {
 
 // set up firebase
 // xcxc remove window.fire reference
+
 var Fire = window.Fire = new Firebase(client_credentials.firebaseUrl);
 var firebase = [];
 Fire.on('child_added', function(data) {

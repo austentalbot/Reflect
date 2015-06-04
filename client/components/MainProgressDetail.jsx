@@ -2,6 +2,7 @@ var React = window.React = require('react');
 var R = React.createElement;
 var GoalStore = require('../stores/GoalStore.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher.js');
+var GoalProgressRow = require('./GoalProgressRow.jsx');
 
 var getGoalState = function() {
   return {
@@ -17,12 +18,12 @@ var MainProgressDetail = module.exports = React.createClass({
     return getGoalState();
   },
   componentWillMount: function() {
-    GoalStore.addFirebaseGoalChangeListener(this._onGoalReviewChange);
+    GoalStore.addFirebaseGoalChangeListener(this._onGoalProgressChange);
   },
   componentWillUnmount: function() {
-    GoalStore.removeFirebaseGoalChangeListener(this._onGoalReviewChange);
+    GoalStore.removeFirebaseGoalChangeListener(this._onGoalProgressChange);
   },
-  _onGoalReviewChange: function() {
+  _onGoalProgressChange: function() {
     console.log('change was emitted');
     this.setState(getGoalState());
   },
@@ -32,25 +33,24 @@ var MainProgressDetail = module.exports = React.createClass({
   },
   render: function() {
     var that = this;
-    // var firebase = that.state.goals.map(function(goal, id) {
-    //   return R(GoalReviewRow, {key: id, goal: goal});
-    // });
+    var firebase = that.state.goals.map(function(goal, id) {
+      return R(GoalProgressRow, {key: id, goal: goal});
+    });
     var addNewGoalButton = R('button', {
       onClick: that.onAddNewGoalClick
     }, 'Add new goal');
 
-    // return R('div', {
-    //   children: [
-    //     R('h1', {
-    //       className: 'reflectTitle'
-    //     }, 'Reflect'),
-    //     R('h2', {}, 'Goals:'),
-    //     addNewGoalButton,
-    //     R('div', {
-    //       children: firebase
-    //     })
-    //   ]
-    // });
-    return addNewGoalButton
+    return R('div', {
+      children: [
+        R('h1', {
+          className: 'reflectTitle'
+        }, 'Reflect'),
+        R('h2', {}, 'Goal progress:'),
+        addNewGoalButton,
+        R('div', {
+          children: firebase
+        })
+      ]
+    });
   }
 });
