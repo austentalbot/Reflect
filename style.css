@@ -54,6 +54,18 @@ html {
   font-weight: bold;
 }
 
+.main-app {
+  display: flex;
+}
+
+.navigation-pane {
+  width: 250px;
+}
+
+.route {
+
+}
+
 .goalInput {
   width: 300px;
 }
