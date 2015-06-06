@@ -2,10 +2,6 @@ html {
   margin: 15px;
 }
 
-.reflectTitle {
-  margin-left: 70px;
-}
-
 .addGoalButton {
   margin-left: 70px;
   margin-right: 10px;
@@ -54,16 +50,16 @@ html {
   font-weight: bold;
 }
 
-.main-app {
+.top-bar {
+  margin: 0;
+}
+
+.navigation {
   display: flex;
 }
 
-.navigation-pane {
+.navigation-side-bar {
   width: 250px;
-}
-
-.route {
-
 }
 
 .goalInput {

@@ -40,15 +40,23 @@ var Navigation = module.exports = React.createClass({
     return R('div', {
       className: 'main-app',
       children: [
+        R('h1', {
+          className: 'top-bar'
+        }, 'Reflect'),
         R('div', {
-          className: 'navigation-pane',
+          className: 'navigation',
           children: [
-            addNewGoalButton,
-            updateGoalProgressButton,
-            reviewGoalProgressButton
+            R('div', {
+              className: 'navigation-side-bar',
+              children: [
+                addNewGoalButton,
+                updateGoalProgressButton,
+                reviewGoalProgressButton
+              ]
+            }),
+            R(this.props.page)
           ]
         }),
-        R(this.props.page)
       ]
     });
   }

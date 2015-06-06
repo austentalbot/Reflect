@@ -28,9 +28,6 @@ var MainGoalCreation = module.exports = React.createClass({
   render: function() {
     return R('div', {
       children: [
-        R('h1', {
-          className: 'reflectTitle'
-        }, 'Reflect'),
         R(GoalInputForm, {
           goalCount: this.state.goalCount,
           firebase: this.state.firebase

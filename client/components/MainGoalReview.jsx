@@ -49,12 +49,7 @@ var MainGoalReview = module.exports = React.createClass({
 
     return R('div', {
       children: [
-        R('h1', {
-          className: 'reflectTitle'
-        }, 'Reflect'),
         R('h2', {}, 'Goals:'),
-        addNewGoalButton,
-        reviewGoalProgressButton,
         R('div', {
           children: firebase
         })

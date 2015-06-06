@@ -42,9 +42,6 @@ var MainProgressDetail = module.exports = React.createClass({
 
     return R('div', {
       children: [
-        R('h1', {
-          className: 'reflectTitle'
-        }, 'Reflect'),
         R('h2', {}, 'Goal progress:'),
         addNewGoalButton,
         R('div', {
