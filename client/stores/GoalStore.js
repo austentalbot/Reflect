@@ -95,6 +95,10 @@ AppDispatcher.register(function(payload) {
     GoalStore.resetGoalCount();
     document.getElementById(GoalConstants.GOAL_ID_PREFIX + 0).value = '';
     GoalStore.emitGoalCountChange();
+  } else if (action.actionType === 'CLEAR_GOALS') {
+    GoalStore.resetGoalCount();
+    document.getElementById(GoalConstants.GOAL_ID_PREFIX + 0).value = '';
+    GoalStore.emitGoalCountChange();
   }
   
   return true;

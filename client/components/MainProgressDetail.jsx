@@ -29,7 +29,7 @@ var MainProgressDetail = module.exports = React.createClass({
   },
   render: function() {
     var that = this;
-    var firebase = that.state.goals.map(function(goal, id) {
+    var progressHistory = that.state.goals.map(function(goal, id) {
       return R(GoalProgressRow, {key: id, goal: goal});
     });
 
@@ -37,7 +37,7 @@ var MainProgressDetail = module.exports = React.createClass({
       children: [
         R('h2', {}, 'Goal progress:'),
         R('div', {
-          children: firebase
+          children: progressHistory
         })
       ]
     });

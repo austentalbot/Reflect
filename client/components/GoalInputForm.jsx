@@ -13,15 +13,16 @@ var GoalInputForm = module.exports = React.createClass({
       actionType: 'INCREMENT_GOAL_COUNT'
     });
   },
+  onClearInputClick: function() {
+    AppDispatcher.handleViewAction({
+      actionType: 'CLEAR_GOALS'
+    });
+  },
   onSubmitClick: function() {
     var that = this;
     AppDispatcher.handleViewAction({
       actionType: 'SUBMIT_GOALS'
     });
-  },
-  onViewGoalsClick: function() {
-    var that = this;
-    this.context.router.transitionTo('/goals');
   },
   render: function() {
     var that = this;
@@ -29,6 +30,11 @@ var GoalInputForm = module.exports = React.createClass({
       className: 'addGoalButton',
       onClick: this.onAddInputClick
     }, '+');
+
+    var clearButton = R('button', {
+      className: 'clearGoalsButton',
+      onClick: this.onClearInputClick
+    }, 'Clear');
 
     var submitButton = R('button', {
       className: 'submitGoalsButton button-primary',
@@ -44,6 +50,7 @@ var GoalInputForm = module.exports = React.createClass({
       className: 'goalInputForm',
       children: [
         addButton,
+        clearButton,
         submitButton
       ].concat(inputs)
     });

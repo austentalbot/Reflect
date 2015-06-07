@@ -8,6 +8,10 @@ html {
   margin-bottom: 40px;
 }
 
+.clearGoalsButton {
+  margin-right: 10px;
+}
+
 .submitGoalsButton {
   margin-right: 10px;
 }

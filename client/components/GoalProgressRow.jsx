@@ -34,6 +34,10 @@ var GoalProgressRow = module.exports = React.createClass({
       return R(GoalProgressEntry, {story: story});
     });
 
+    if (history.length === 0) {
+      history = ['Add an update to track your progress'];
+    }
+
     if (this.state.isOpen) {
       rowContents.push(
         R('div', {
