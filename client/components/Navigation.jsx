@@ -23,17 +23,20 @@ var Navigation = module.exports = React.createClass({
   render: function() {
     var that = this;
 
-    var addNewGoalButton = R('button', {
+    var addNewGoalButton = R('div', {
+      className: 'navigation-side-bar-button',
       onClick: that.onAddNewGoalClick
-    }, 'Add new goal');
+    }, 'Add goals');
 
-    var updateGoalProgressButton = R('button', {
+    var updateGoalProgressButton = R('div', {
+      className: 'navigation-side-bar-button',
       onClick: that.onUpdateGoalProgressClick
-    }, 'Update goal progress');
+    }, 'Update progress');
 
-    var reviewGoalProgressButton = R('button', {
+    var reviewGoalProgressButton = R('div', {
+      className: 'navigation-side-bar-button',
       onClick: that.onReviewGoalProgressClick
-    }, 'Review goal progress');
+    }, 'Review progress');
 
     return R('div', {
       className: 'main-app',
