@@ -34,6 +34,7 @@ var MainProgressDetail = module.exports = React.createClass({
     });
 
     return R('div', {
+      className: 'main-app',
       children: [
         R('h2', {}, 'Goal progress:'),
         R('div', {

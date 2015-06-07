@@ -16,10 +16,6 @@ html {
   margin-right: 10px;
 }
 
-.goal-review-row-title {
-  font-weight: bold;
-}
-
 .goal-review-row-detail-input {
   width: 350px;
   resize: none;
@@ -49,11 +45,6 @@ html {
   width: 450px;
 }
 
-.goal-progress-entry-title {
-  font-size: 16px;
-  font-weight: bold;
-}
-
 .top-bar {
   margin: 0;
 }
@@ -66,18 +57,25 @@ html {
   width: 180px;
 }
 
-.navigation-side-bar-button {
+.div-button, .goal-row-button {
   border: 1px solid black;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
   margin: 0 10px 10px 0;
   padding: 5px;
+}
+
+.div-button {
+  flex: 0 0 auto;
   text-align: center;
 }
 
-.clickable-text {
-  cursor: pointer;
+.goal-row-button {
+}
+
+.main-app {
+  flex: 1 1 180px;
 }
 
 .goalInput {

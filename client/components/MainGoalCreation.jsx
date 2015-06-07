@@ -27,6 +27,7 @@ var MainGoalCreation = module.exports = React.createClass({
   },
   render: function() {
     return R('div', {
+      className: 'main-app',
       children: [
         R(GoalInputForm, {
           goalCount: this.state.goalCount,
