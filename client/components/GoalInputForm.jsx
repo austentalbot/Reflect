@@ -28,17 +28,12 @@ var GoalInputForm = module.exports = React.createClass({
     var addButton = R('button', {
       className: 'addGoalButton',
       onClick: this.onAddInputClick
-    }, 'Add goal');
+    }, '+');
 
     var submitButton = R('button', {
       className: 'submitGoalsButton button-primary',
       onClick: this.onSubmitClick
     }, 'Submit goals');
-
-    var viewGoalsButton = R('button', {
-      className: 'viewGoalsButton button',
-      onClick: this.onViewGoalsClick
-    }, 'View goals');
 
     var inputs = [];
     for (var i = 0; i<that.props.goalCount; i++) {
@@ -49,8 +44,7 @@ var GoalInputForm = module.exports = React.createClass({
       className: 'goalInputForm',
       children: [
         addButton,
-        submitButton,
-        viewGoalsButton
+        submitButton
       ].concat(inputs)
     });
   }

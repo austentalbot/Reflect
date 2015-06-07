@@ -25,7 +25,7 @@ var GoalProgressRow = module.exports = React.createClass({
 
     rowContents = [
       R('div', {
-        className: 'goal-progress-row-title',
+        className: 'goal-progress-row-title clickable-text',
         onClick: that.onOpenDetailsClick
       }, this.props.goal.val().name)
     ];

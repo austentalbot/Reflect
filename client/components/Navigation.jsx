@@ -35,8 +35,6 @@ var Navigation = module.exports = React.createClass({
       onClick: that.onReviewGoalProgressClick
     }, 'Review goal progress');
 
-    console.log('this.props', this.props);
-
     return R('div', {
       className: 'main-app',
       children: [

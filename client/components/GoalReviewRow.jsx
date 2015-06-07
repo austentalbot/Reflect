@@ -36,7 +36,7 @@ var GoalReviewRow = module.exports = React.createClass({
 
     rowContents = [
       R('div', {
-        className: 'goal-review-row-title',
+        className: 'goal-review-row-title clickable-text',
         onClick: that.onOpenDetailsClick
       }, this.props.goal.val().name)
     ];

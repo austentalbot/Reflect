@@ -91,6 +91,10 @@ AppDispatcher.register(function(payload) {
         Fire.push({ name: goal });
       }
     }
+    // reset goals after submitting
+    GoalStore.resetGoalCount();
+    document.getElementById(GoalConstants.GOAL_ID_PREFIX + 0).value = '';
+    GoalStore.emitGoalCountChange();
   }
   
   return true;

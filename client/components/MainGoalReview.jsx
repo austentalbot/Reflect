@@ -26,26 +26,11 @@ var MainGoalReview = module.exports = React.createClass({
     console.log('change was emitted');
     this.setState(getGoalState());
   },
-  onAddNewGoalClick: function() {
-    console.log('add new goal');
-    this.context.router.transitionTo('/home');
-  },
-  onReviewGoalProgressClick: function() {
-    console.log('review goal progress');
-    this.context.router.transitionTo('/progress');
-  },
   render: function() {
     var that = this;
     var firebase = that.state.goals.map(function(goal, id) {
       return R(GoalReviewRow, {key: id, goal: goal});
     });
-    var addNewGoalButton = R('button', {
-      onClick: that.onAddNewGoalClick
-    }, 'Add new goal');
-
-    var reviewGoalProgressButton = R('button', {
-      onClick: that.onReviewGoalProgressClick
-    }, 'Review goal progress');
 
     return R('div', {
       children: [

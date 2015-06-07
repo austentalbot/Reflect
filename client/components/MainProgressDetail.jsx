@@ -27,23 +27,15 @@ var MainProgressDetail = module.exports = React.createClass({
     console.log('change was emitted');
     this.setState(getGoalState());
   },
-  onAddNewGoalClick: function() {
-    console.log('add new goal');
-    this.context.router.transitionTo('/home');
-  },
   render: function() {
     var that = this;
     var firebase = that.state.goals.map(function(goal, id) {
       return R(GoalProgressRow, {key: id, goal: goal});
     });
-    var addNewGoalButton = R('button', {
-      onClick: that.onAddNewGoalClick
-    }, 'Add new goal');
 
     return R('div', {
       children: [
         R('h2', {}, 'Goal progress:'),
-        addNewGoalButton,
         R('div', {
           children: firebase
         })

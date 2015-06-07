@@ -62,6 +62,10 @@ html {
   width: 250px;
 }
 
+.clickable-text {
+  cursor: pointer;
+}
+
 .goalInput {
   width: 300px;
 }
