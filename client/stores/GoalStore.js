@@ -8,6 +8,7 @@ var client_credentials = require('../client_credentials.js');
 //internal array of goals
 var _goals = [];
 var _goalCount = 1;
+var _loggedIn = false;
 
 // Method to load goals from action data
 function loadGoals(data) {
@@ -51,6 +52,18 @@ var GoalStore = assign({}, EventEmitter.prototype, {
   },
   removeFirebaseGoalChangeListener: function(callback) {
     this.removeListener('FIREBASE_GOAL_CHANGE', callback);
+  },
+  emitLoginChange: function() {
+    this.emit('LOGIN_CHANGE');
+  },
+  getLoginStatus: function() {
+    return _loggedIn;
+  },
+  addLoginChangeListener: function(callback) {
+    this.on('LOGIN_CHANGE', callback);
+  },
+  removeLoginChangeListener: function(callback) {
+    this.removeListener('LOGIN_CHANGE', callback);
   }
 });
 
@@ -60,11 +73,33 @@ var GoalStore = assign({}, EventEmitter.prototype, {
 var Fire = window.Fire = new Firebase(client_credentials.firebaseUrl);
 var FireUser, FireUserGoals;
 var firebase = [];
-// Fire.on('child_added', function(data) {
-//   console.log('child_added', data);
-//   firebase.push(data);
-//   GoalStore.emitFirebaseGoalChange();
-// });
+
+Fire.onAuth(function(authData) {
+  console.log('on auth callback', authData);
+  firebase = [];
+  if (authData) {
+    _loggedIn = true;
+    FireUser = window.FireUser = Fire.child(authData.uid);
+    FireUser.once('value', function(val) {
+      console.log('FireUser val', val);
+      if (!val.val()) {
+        FireUser.set({
+          displayName: authData.google.displayName
+        });
+      }
+      FireUserGoals = window.FireUserGoals = FireUser.child('goals');
+      FireUserGoals.on('child_added', function(data) {
+        console.log('child_added', data);
+        firebase.push(data);
+        GoalStore.emitFirebaseGoalChange();
+      });
+    });
+  } else {
+    _loggedIn = false;
+  }
+  GoalStore.emitLoginChange();
+});
+
 // xcxc this is for testing remove later
 // Fire.remove();
 
@@ -106,25 +141,10 @@ AppDispatcher.register(function(payload) {
         console.log('Login failed', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-
-        firebase = [];
-        FireUser = window.FireUser = Fire.child(authData.uid);
-        FireUser.once('value', function(val) {
-          console.log('FireUser val', val);
-          if (!val.val()) {
-            FireUser.set({
-              displayName: authData.google.displayName
-            });
-          }
-          FireUserGoals = window.FireUserGoals = FireUser.child('goals');
-          FireUserGoals.on('child_added', function(data) {
-            console.log('child_added', data);
-            firebase.push(data);
-            GoalStore.emitFirebaseGoalChange();
-          });
-        });
       }
     });
+  } else if (action.actionType === 'LOGOUT') {
+    Fire.unauth();
   }
   
   return true;

@@ -12,10 +12,33 @@ var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 
+var getLoginState = function() {
+  return {
+    loggedIn: GoalStore.getLoginStatus()
+  };
+}
+
 var App = React.createClass({
+  getInitialState: function() {
+    return getLoginState();
+  },
+  componentWillMount: function() {
+    GoalStore.addLoginChangeListener(this._onLoginChange);
+  },
+  componentWillUnmount: function() {
+    GoalStore.removeLOginChangeListener(this._onLoginChange);
+  },
+  _onLoginChange: function() {
+    console.log('login change was emitted');
+    this.setState(getLoginState());
+  },
   render: function() {
-    return R(Navigation, {page: RouteHandler});
-    // return R(RouteHandler);
+    console.log('login state', this.state);
+    if (this.state.loggedIn) {
+      return R(Navigation, {page: RouteHandler});
+    } else {
+      return R(Login);      
+    }
   }
 });
 
