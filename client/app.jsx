@@ -3,6 +3,7 @@ var R = React.createElement;
 var MainGoalCreation = require('./components/MainGoalCreation.jsx');
 var MainGoalReview = require('./components/MainGoalReview.jsx');
 var MainProgressDetail = require('./components/MainProgressDetail.jsx');
+var Login = require('./components/Login.jsx');
 var GoalStore = require('./stores/GoalStore.js');
 var Navigation = require('./components/Navigation.jsx');
 
@@ -24,6 +25,7 @@ var routes = (
     className: 'route',
     children: [
       R(DefaultRoute, {handler: MainGoalCreation}),
+      R(Route, { path: 'login', handler: Login }),
       R(Route, { path: 'home', handler: MainGoalCreation }),
       R(Route, { path: 'goals', handler: MainGoalReview }),
       R(Route, { path: 'progress', handler: MainProgressDetail })      

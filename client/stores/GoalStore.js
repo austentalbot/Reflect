@@ -58,12 +58,13 @@ var GoalStore = assign({}, EventEmitter.prototype, {
 // xcxc remove window.fire reference
 
 var Fire = window.Fire = new Firebase(client_credentials.firebaseUrl);
+var FireUser, FireUserGoals;
 var firebase = [];
-Fire.on('child_added', function(data) {
-  console.log('child_added', data);
-  firebase.push(data);
-  GoalStore.emitFirebaseGoalChange();
-});
+// Fire.on('child_added', function(data) {
+//   console.log('child_added', data);
+//   firebase.push(data);
+//   GoalStore.emitFirebaseGoalChange();
+// });
 // xcxc this is for testing remove later
 // Fire.remove();
 
@@ -88,7 +89,7 @@ AppDispatcher.register(function(payload) {
     for (var i = 0; i < _goalCount; i++) {
       goal = document.getElementById(GoalConstants.GOAL_ID_PREFIX + i).value.trim();
       if (goal.length > 0) {
-        Fire.push({ name: goal });
+        FireUserGoals.push({ name: goal });
       }
     }
     // reset goals after submitting
@@ -99,6 +100,31 @@ AppDispatcher.register(function(payload) {
     GoalStore.resetGoalCount();
     document.getElementById(GoalConstants.GOAL_ID_PREFIX + 0).value = '';
     GoalStore.emitGoalCountChange();
+  } else if (action.actionType === 'LOGIN') {
+    Fire.authWithOAuthPopup('google', function(error, authData) {
+      if (error) {
+        console.log('Login failed', error);
+      } else {
+        console.log('Authenticated successfully with payload:', authData);
+
+        firebase = [];
+        FireUser = window.FireUser = Fire.child(authData.uid);
+        FireUser.once('value', function(val) {
+          console.log('FireUser val', val);
+          if (!val.val()) {
+            FireUser.set({
+              displayName: authData.google.displayName
+            });
+          }
+          FireUserGoals = window.FireUserGoals = FireUser.child('goals');
+          FireUserGoals.on('child_added', function(data) {
+            console.log('child_added', data);
+            firebase.push(data);
+            GoalStore.emitFirebaseGoalChange();
+          });
+        });
+      }
+    });
   }
   
   return true;

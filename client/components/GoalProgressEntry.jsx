@@ -16,7 +16,7 @@ var GoalProgressEntry = module.exports = React.createClass({
             R('span', {
               className: 'goal-progress-entry-title'
             }, 'Date: '),
-            R('span', {}, new Date(story.timestamp).toStrings)
+            R('span', {}, new Date(story.timestamp).toString())
           ]
         }),
         R('div', {
