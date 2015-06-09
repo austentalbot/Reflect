@@ -84,7 +84,8 @@ Fire.onAuth(function(authData) {
       console.log('FireUser val', val);
       if (!val.val()) {
         FireUser.set({
-          displayName: authData.google.displayName
+          displayName: authData.google.displayName,
+          email: authData.google.email
         });
       }
       FireUserGoals = window.FireUserGoals = FireUser.child('goals');
@@ -142,7 +143,7 @@ AppDispatcher.register(function(payload) {
       } else {
         console.log('Authenticated successfully with payload:', authData);
       }
-    });
+    }, {scope: 'email'});
   } else if (action.actionType === 'LOGOUT') {
     Fire.unauth();
   }
