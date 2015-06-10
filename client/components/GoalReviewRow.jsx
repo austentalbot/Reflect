@@ -31,30 +31,41 @@ var GoalReviewRow = module.exports = React.createClass({
       this.setState({ isOpen: false});
     }
   },
+  onCompleteClick: function() {
+    console.log('complete');
+    // set status to complete
+    this.props.goal.ref().update({'status': 'complete'});
+  },
+  onRemoveClick: function() {
+    console.log('remove');
+    // set status to archived
+    this.props.goal.ref().update({'status': 'archived'});
+  },
   render: function() {
     var that = this;
 
     var completeButton = R('button', {
       className: 'goal-review-row-complete',
-      onClick: function() {
-        console.log('complete click');
-      }
+      onClick: that.onCompleteClick
     }, '✓');
 
     var removeButton = R('button', {
       className: 'goal-review-row-remove',
-      onClick: function() {
-        console.log('remove click');
-      }
+      onClick: that.onRemoveClick
     }, '✕');
 
     rowContents = [
       R('div', {
-        className: 'goal-row-button goal-review-row-title',
-        onClick: that.onOpenDetailsClick
-      }, this.props.goal.val().name),
-      completeButton,
-      removeButton
+        className: 'goal-review-row-main',
+        children: [
+          R('div', {
+            className: 'goal-row-button goal-review-row-title',
+            onClick: that.onOpenDetailsClick
+          }, this.props.goal.val().name),
+          completeButton,
+          removeButton
+        ]
+      })
     ];
 
     if (this.state.isOpen) {

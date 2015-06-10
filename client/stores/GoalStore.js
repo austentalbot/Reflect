@@ -125,7 +125,7 @@ AppDispatcher.register(function(payload) {
     for (var i = 0; i < _goalCount; i++) {
       goal = document.getElementById(GoalConstants.GOAL_ID_PREFIX + i).value.trim();
       if (goal.length > 0) {
-        FireUserGoals.push({ name: goal });
+        FireUserGoals.push({ name: goal, status: 'open' });
       }
     }
     // reset goals after submitting
