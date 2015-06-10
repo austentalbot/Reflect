@@ -16,6 +16,14 @@ html {
   margin-right: 10px;
 }
 
+.goal-review-row {
+  display: flex;
+}
+
+.goal-review-row-title {
+  flex: 1 1 auto;
+}
+
 .goal-review-row-detail-input {
   width: 350px;
   resize: none;

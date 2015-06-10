@@ -36,7 +36,7 @@ var MainProgressDetail = module.exports = React.createClass({
     return R('div', {
       className: 'main-app',
       children: [
-        R('h2', {}, 'Goal progress:'),
+        R('h4', {}, 'Review the timeline of your progress'),
         R('div', {
           children: progressHistory
         })

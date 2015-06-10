@@ -34,11 +34,27 @@ var GoalReviewRow = module.exports = React.createClass({
   render: function() {
     var that = this;
 
+    var completeButton = R('button', {
+      className: 'goal-review-row-complete',
+      onClick: function() {
+        console.log('complete click');
+      }
+    }, '✓');
+
+    var removeButton = R('button', {
+      className: 'goal-review-row-remove',
+      onClick: function() {
+        console.log('remove click');
+      }
+    }, '✕');
+
     rowContents = [
       R('div', {
         className: 'goal-row-button goal-review-row-title',
         onClick: that.onOpenDetailsClick
-      }, this.props.goal.val().name)
+      }, this.props.goal.val().name),
+      completeButton,
+      removeButton
     ];
 
     if (this.state.isOpen) {

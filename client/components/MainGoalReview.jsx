@@ -35,7 +35,7 @@ var MainGoalReview = module.exports = React.createClass({
     return R('div', {
       className: 'main-app',
       children: [
-        R('h2', {}, 'Goals:'),
+        R('h4', {}, 'Update the progress on your goals'),
         R('div', {
           children: firebase
         })
