@@ -23,12 +23,14 @@ var MainGoalReview = module.exports = React.createClass({
     GoalStore.removeFirebaseGoalChangeListener(this._onGoalReviewChange);
   },
   _onGoalReviewChange: function() {
-    console.log('change was emitted');
+    console.log('on goal review change, change was emitted');
     this.setState(getGoalState());
   },
   render: function() {
     var that = this;
-    var firebase = that.state.goals.map(function(goal, id) {
+    var firebase = that.state.goals.filter(function(goal) {
+      return goal.val().status === 'open';
+    }).map(function(goal, id) {
       return R(GoalReviewRow, {key: id, goal: goal});
     });
 

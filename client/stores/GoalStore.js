@@ -89,8 +89,9 @@ Fire.onAuth(function(authData) {
         });
       }
       FireUserGoals = window.FireUserGoals = FireUser.child('goals');
-      FireUserGoals.on('child_added', function(data) {
+      FireUserGoals.on('child_added', function(data, prevChild) {
         console.log('child_added', data);
+        console.log('prev child', prevChild);
         firebase.push(data);
         GoalStore.emitFirebaseGoalChange();
       });

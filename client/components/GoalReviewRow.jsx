@@ -35,11 +35,13 @@ var GoalReviewRow = module.exports = React.createClass({
     console.log('complete');
     // set status to complete
     this.props.goal.ref().update({'status': 'complete'});
+    GoalStore.emitFirebaseGoalChange();
   },
   onRemoveClick: function() {
     console.log('remove');
     // set status to archived
     this.props.goal.ref().update({'status': 'archived'});
+    GoalStore.emitFirebaseGoalChange();
   },
   render: function() {
     var that = this;
