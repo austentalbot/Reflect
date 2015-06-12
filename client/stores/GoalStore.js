@@ -33,14 +33,11 @@ var GoalStore = assign({}, EventEmitter.prototype, {
     return _goalCount;
   },
   getFirebase: function() {
-    // xcxc temp test until we get ordered list
     var firebaseArr = [];
     for (var key in firebaseObj) {
       firebaseArr.push(firebaseObj[key]);
     }
     return firebaseArr;
-    
-    // return firebase;
   },
   emitGoalCountChange: function() {
     this.emit('GOAL_COUNT_CHANGE');
@@ -79,12 +76,11 @@ var GoalStore = assign({}, EventEmitter.prototype, {
 
 var Fire = window.Fire = new Firebase(client_credentials.firebaseUrl);
 var FireUser, FireUserGoals;
-var firebase = [];
 var firebaseObj = {};
 
 Fire.onAuth(function(authData) {
   console.log('on auth callback', authData);
-  firebase = [];
+  firebaseObj = {};
   if (authData) {
     _loggedIn = true;
     FireUser = window.FireUser = Fire.child(authData.uid);
@@ -99,8 +95,6 @@ Fire.onAuth(function(authData) {
       FireUserGoals = window.FireUserGoals = FireUser.child('goals');
       FireUserGoals.on('child_added', function(data, prevChild) {
         console.log('child_added', data);
-        console.log('prev child', prevChild);
-        firebase.push(data);
         firebaseObj[data.key()] = data;
         GoalStore.emitFirebaseGoalChange();
       });

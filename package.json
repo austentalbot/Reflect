@@ -19,6 +19,7 @@
   "devDependencies": {
     "browserify": "^10.1.0",
     "gulp": "^3.8.11",
+    "gulp-sass": "^2.0.1",
     "reactify": "^1.1.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.1"

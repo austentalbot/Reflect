@@ -1,55 +1,68 @@
 html {
-  margin: 15px; }
+  margin: 15px;
+}
 
 .addGoalButton {
   margin-left: 70px;
   margin-right: 10px;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+}
 
 .clearGoalsButton {
-  margin-right: 10px; }
+  margin-right: 10px;
+}
 
 .submitGoalsButton {
-  margin-right: 10px; }
+  margin-right: 10px;
+}
 
 .goal-review-row-main {
-  display: flex; }
+  display: flex;
+}
 
 .goal-review-row-title {
-  flex: 1 1 auto; }
+  flex: 1 1 auto;
+}
 
 .goal-review-row-detail-input {
   width: 350px;
-  resize: none; }
+  resize: none;
+}
 
 .goal-review-progress-bar {
   height: 30px;
   /*background: linear-gradient(to right, #2ecc71, #f1c40f, #e74c3c);*/
-  background: linear-gradient(to left, #2ecc71, rgba(241, 196, 15, 0.87), rgba(231, 76, 60, 0.75));
+  background: linear-gradient(to left, rgba(46,204,113,1), rgba(241,196,15,0.87), rgba(231,76,60,0.75));
   border-radius: 15px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 
 .goal-review-progress-bar-indicator {
   position: relative;
   top: 2px;
   height: 26px;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 13px; }
+  background: rgba(255, 255, 255, .6);
+  border-radius: 13px;
+}
 
 .goal-progress-entry {
   border: 1px solid gray;
   border-radius: 5px;
   margin: 10px;
-  padding: 10px; }
+  padding: 10px;
+}
 
 .top-bar {
-  margin: 0; }
+  margin: 0;
+}
 
 .navigation {
-  display: flex; }
+  display: flex;
+}
 
 .navigation-side-bar {
-  width: 180px; }
+  width: 180px;
+}
 
 .div-button, .goal-row-button {
   border: 1px solid black;
@@ -57,19 +70,27 @@ html {
   cursor: pointer;
   font-size: 18px;
   margin: 0 0 10px 0;
-  padding: 5px; }
+  padding: 5px;
+}
 
 .div-button {
   flex: 0 0 auto;
-  text-align: center; }
+  text-align: center;
+}
+
+.goal-row-button {
+}
 
 .main-app {
   flex: 1 1 180px;
-  padding: 0 10px; }
+  padding: 0 10px;
+}
 
 .goalInput {
-  width: 300px; }
+  width: 300px;
+}
 
 .goalInputTitle {
   display: inline-block;
-  width: 70px; }
+  width: 70px;
+}
