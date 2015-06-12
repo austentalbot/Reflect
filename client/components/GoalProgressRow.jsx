@@ -38,11 +38,18 @@ var GoalProgressRow = module.exports = React.createClass({
       history = ['Add an update to track your progress'];
     }
 
+    var goalDescription = R('div', {
+      className: 'goal-progress-goal-description'
+    }, 'Status: ' + this.props.goal.val().status);
+
     if (this.state.isOpen) {
       rowContents.push(
         R('div', {
           className: 'goal-progress-row-detail',
-          children: history
+          children: [
+            goalDescription,
+            history
+          ]
         })
       );
     }

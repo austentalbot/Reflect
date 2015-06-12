@@ -27,11 +27,13 @@
       margin-right: 10px; }
     #react .main-app .goalInputForm .submitGoalsButton {
       margin-right: 10px; }
-    #react .main-app .goal-review-row-main {
+    #react .main-app .goal-review-row .goal-review-row-main {
       display: flex; }
-    #react .main-app .goal-review-row-title {
-      flex: 1 1 auto; }
-    #react .main-app .goal-review-row-detail-input {
+      #react .main-app .goal-review-row .goal-review-row-main .goal-review-row-title {
+        flex: 1 1 auto; }
+      #react .main-app .goal-review-row .goal-review-row-main .goal-review-row-complete, #react .main-app .goal-review-row .goal-review-row-main .goal-review-row-remove {
+        margin-left: 10px; }
+    #react .main-app .goal-review-row .goal-review-row-detail-input {
       width: 350px;
       resize: none; }
     #react .main-app .goal-review-progress-bar {

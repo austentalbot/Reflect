@@ -28,7 +28,7 @@
   .main-app {
     flex: 1 1 180px;
     padding: 0 10px;
-    
+
     .goalInputForm {
       .addGoalButton {
         margin-left: 70px;
@@ -45,17 +45,21 @@
       }
     }
 
-    .goal-review-row-main {
-      display: flex;
-    }
+    .goal-review-row {
+      .goal-review-row-main {
+        display: flex;
+        .goal-review-row-title {
+          flex: 1 1 auto;
+        }
+        .goal-review-row-complete, .goal-review-row-remove {
+          margin-left: 10px;
+        }
+      }
 
-    .goal-review-row-title {
-      flex: 1 1 auto;
-    }
-
-    .goal-review-row-detail-input {
-      width: 350px;
-      resize: none;
+      .goal-review-row-detail-input {
+        width: 350px;
+        resize: none;
+      }
     }
 
     .goal-review-progress-bar {

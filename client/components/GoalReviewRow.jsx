@@ -47,12 +47,12 @@ var GoalReviewRow = module.exports = React.createClass({
     var that = this;
 
     var completeButton = R('button', {
-      className: 'goal-review-row-complete',
+      className: 'goal-review-row-complete button-primary',
       onClick: that.onCompleteClick
     }, '✓');
 
     var removeButton = R('button', {
-      className: 'goal-review-row-remove',
+      className: 'goal-review-row-remove button-primary',
       onClick: that.onRemoveClick
     }, '✕');
 
