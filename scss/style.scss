@@ -1,13 +1,28 @@
-// color theme: https://color.adobe.com/pomegranate-explosion-color-theme-1923981/
-$color1: #63A69F;
-$color2: #F2E1AC;
-$color3: #F2836B;
-$color4: #F2594B;
-$color5: #CD2C24;
+//colors: http://paletton.com/palette.php?uid=33p0u0kqbVZeCY5kNX2vWTRPAMi
 
+$primaryColor1: #33C1F0;
+$primaryColor2: #8ADBF6;
+$primaryColor3: #5BCDF3;
+$primaryColor4: #09B2EA;
+$primaryColor5: #039FD3;
+
+$secondaryColor1: #FFC22E;
+$secondaryColor2: #FFDD8B;
+$secondaryColor3: #FFCE59;
+$secondaryColor4: #FFB401;
+$secondaryColor5: #FFB400;
+
+$ternaryColor1: #FF4F2E;
+$ternaryColor2: #FF9D8B;
+$ternaryColor3: #FF7359;
+$ternaryColor4: #FF2801;
+$ternaryColor5: #FF2800;
+
+
+body {
+  margin: 0;
+}
 #react {
-  margin: 15px;
-
   .div-button {
     flex: 0 0 auto;
     text-align: center;
@@ -22,17 +37,20 @@ $color5: #CD2C24;
   }
 
   .top-bar {
-    margin: 0;
-    color: $color5;
+    background: $primaryColor3;
+    color: white;
+    margin-bottom: 10px;
+    padding-left: 10px;
   }
 
   .navigation {
     display: flex;
+    padding-left: 10px;
     .navigation-side-bar {
       width: 180px;
       .div-button {
         color: white;
-        background: $color3;
+        background: $secondaryColor3;
         border-color: white;
       }
     }
@@ -55,6 +73,12 @@ $color5: #CD2C24;
 
       .submitGoalsButton {
         margin-right: 10px;
+      }
+      .goalInputRow {
+        display: flex;
+        .goalInput {
+          flex: 1 1 auto;
+        }
       }
     }
 
