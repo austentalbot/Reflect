@@ -1,3 +1,10 @@
+// color theme: https://color.adobe.com/pomegranate-explosion-color-theme-1923981/
+$color1: #63A69F;
+$color2: #F2E1AC;
+$color3: #F2836B;
+$color4: #F2594B;
+$color5: #CD2C24;
+
 #react {
   margin: 15px;
 
@@ -16,12 +23,18 @@
 
   .top-bar {
     margin: 0;
+    color: $color5;
   }
 
   .navigation {
     display: flex;
     .navigation-side-bar {
       width: 180px;
+      .div-button {
+        color: white;
+        background: $color3;
+        border-color: white;
+      }
     }
   }
 

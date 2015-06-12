@@ -11,11 +11,16 @@
     margin: 0 0 10px 0;
     padding: 5px; }
   #react .top-bar {
-    margin: 0; }
+    margin: 0;
+    color: #CD2C24; }
   #react .navigation {
     display: flex; }
     #react .navigation .navigation-side-bar {
       width: 180px; }
+      #react .navigation .navigation-side-bar .div-button {
+        color: white;
+        background: #F2836B;
+        border-color: white; }
   #react .main-app {
     flex: 1 1 180px;
     padding: 0 10px; }
