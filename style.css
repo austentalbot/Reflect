@@ -1,75 +1,65 @@
-html {
+#react {
   margin: 15px; }
-
-.addGoalButton {
-  margin-left: 70px;
-  margin-right: 10px;
-  margin-bottom: 40px; }
-
-.clearGoalsButton {
-  margin-right: 10px; }
-
-.submitGoalsButton {
-  margin-right: 10px; }
-
-.goal-review-row-main {
-  display: flex; }
-
-.goal-review-row-title {
-  flex: 1 1 auto; }
-
-.goal-review-row-detail-input {
-  width: 350px;
-  resize: none; }
-
-.goal-review-progress-bar {
-  height: 30px;
-  /*background: linear-gradient(to right, #2ecc71, #f1c40f, #e74c3c);*/
-  background: linear-gradient(to left, #2ecc71, rgba(241, 196, 15, 0.87), rgba(231, 76, 60, 0.75));
-  border-radius: 15px;
-  margin-bottom: 15px; }
-
-.goal-review-progress-bar-indicator {
-  position: relative;
-  top: 2px;
-  height: 26px;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 13px; }
-
-.goal-progress-entry {
-  border: 1px solid gray;
-  border-radius: 5px;
-  margin: 10px;
-  padding: 10px; }
-
-.top-bar {
-  margin: 0; }
-
-.navigation {
-  display: flex; }
-
-.navigation-side-bar {
-  width: 180px; }
-
-.div-button, .goal-row-button {
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-  margin: 0 0 10px 0;
-  padding: 5px; }
-
-.div-button {
-  flex: 0 0 auto;
-  text-align: center; }
-
-.main-app {
-  flex: 1 1 180px;
-  padding: 0 10px; }
-
-.goalInput {
-  width: 300px; }
-
-.goalInputTitle {
-  display: inline-block;
-  width: 70px; }
+  #react .div-button {
+    flex: 0 0 auto;
+    text-align: center; }
+  #react .div-button, #react .goal-row-button {
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    padding: 5px; }
+  #react .top-bar {
+    margin: 0; }
+  #react .navigation {
+    display: flex; }
+    #react .navigation .navigation-side-bar {
+      width: 180px; }
+  #react .main-app {
+    flex: 1 1 180px;
+    padding: 0 10px; }
+    #react .main-app .goalInputForm .addGoalButton {
+      margin-left: 70px;
+      margin-right: 10px;
+      margin-bottom: 40px; }
+    #react .main-app .goalInputForm .clearGoalsButton {
+      margin-right: 10px; }
+    #react .main-app .goalInputForm .submitGoalsButton {
+      margin-right: 10px; }
+    #react .main-app .goal-review-row-main {
+      display: flex; }
+    #react .main-app .goal-review-row-title {
+      flex: 1 1 auto; }
+    #react .main-app .goal-review-row-detail-input {
+      width: 350px;
+      resize: none; }
+    #react .main-app .goal-review-progress-bar {
+      height: 30px;
+      /*background: linear-gradient(to right, #2ecc71, #f1c40f, #e74c3c);*/
+      background: linear-gradient(to left, #2ecc71, rgba(241, 196, 15, 0.87), rgba(231, 76, 60, 0.75));
+      border-radius: 15px;
+      margin-bottom: 15px; }
+    #react .main-app .goal-review-progress-bar-indicator {
+      position: relative;
+      top: 2px;
+      height: 26px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 13px; }
+    #react .main-app .goal-progress-entry {
+      border: 1px solid gray;
+      border-radius: 5px;
+      margin: 10px;
+      padding: 10px; }
+    #react .main-app .div-button, #react .main-app .goal-row-button {
+      border: 1px solid black;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      margin: 0 0 10px 0;
+      padding: 5px; }
+    #react .main-app .goalInput {
+      width: 300px; }
+    #react .main-app .goalInputTitle {
+      display: inline-block;
+      width: 70px; }
