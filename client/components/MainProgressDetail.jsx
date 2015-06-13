@@ -33,10 +33,31 @@ var MainProgressDetail = module.exports = React.createClass({
       return R(GoalProgressRow, {key: id, goal: goal});
     });
 
+    var progress = {
+      open: 0,
+      archived: 0,
+      complete: 0
+    };
+
+    that.state.goals.forEach(function(goal) {
+      var status = goal.val().status;
+      progress[status]++;
+    });
+
+    var goalStats = R('div', {
+      className: 'goal-progress-goal-stats',
+      children: [
+        'Open goals: ' + progress.open,
+        'Completed goals: ' + progress.complete,
+        'Archived goals: ' + progress.archived
+      ]
+    });
+
     return R('div', {
       className: 'main-app',
       children: [
         R('h4', {}, 'Review the timeline of your progress'),
+        goalStats,
         R('div', {
           children: progressHistory
         })
